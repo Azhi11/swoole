@@ -12,4 +12,12 @@ if(!$client->connect('127.0.0.1', 9501)) {
     exit;
 }
 //php cli常量 STDOUT 输出    STDIN  输入
-fwrite();
+fwrite(STDOUT, "请输入消息：");
+$msg = trim(fgets(STDIN));
+
+//发送消息给 tcp server 服务器
+$client->send($msg);
+
+//接收消息
+$result =  $client->recv();
+echo $result;

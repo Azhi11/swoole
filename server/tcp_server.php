@@ -9,7 +9,7 @@
 $serv = new swoole_server("0.0.0.0", 9501);
 
 $serv->set([
-    'worker_num' => 8,  //worker进程数  cpu核数的 1-4
+    'worker_num' => 4,  //worker进程数  cpu核数的 1-4
     'max_request' => 10000,
 ]);
 
@@ -22,6 +22,7 @@ $serv->on('connect', function ($serv, $fd, $reactor_id) {
 $serv->on('receive', function ($serv, $fd, $from_id, $data) {
     $serv->send($fd, "Server: ".$data);
 });
+
 
 //监听连接关闭事件
 $serv->on('close', function ($serv, $fd) {
