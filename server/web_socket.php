@@ -32,7 +32,6 @@ $server->on('request', function ($request, $response) {
     foreach ($server->connections as $fd) {
         $server->push($fd, $request->get['message']);
     }
-
 });
 
 $server->start();
