@@ -6,18 +6,19 @@
  * Time: 12:14
  */
 //创建websocket服务器对象，监听0.0.0.0:9502端口
-$server = new swoole_websocket_server("0.0.0.0", 9502);
+$server = new swoole_websocket_server("0.0.0.0", 9801);
 
 //监听WebSocket连接打开事件
 $server->on('open', function ($server, $request) {
-    var_dump($request->fd, $request->get, $request->server);
+//    var_dump($request->fd, $request->get, $request->server);
+    echo $request->fd;
     $server->push($request->fd, "hello, welcome\n");
 });
 
 //监听WebSocket消息事件
 $server->on('message', function ($server, $frame) {
     echo "Message: {$frame->data}\n";
-    $server->push($frame->fd, "server: {$frame->data}");
+//    $server->push($frame->fd, "server: {$frame->data}");
 });
 
 //监听WebSocket连接关闭事件

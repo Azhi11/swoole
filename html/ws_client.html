@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ws_client</title>
+</head>
+<body>
+<h1>ws hello</h1>
+    <script>
+        var ws_url = "ws://www.azhiswoole.com:9801";
+        var ws = new WebSocket(ws_url);
+        ws.onopen = function(evt) {
+            alert('连接成功');
+            ws.send('hello server');
+        };
+        ws.onmessage = function(evt) {
+            alert('接收数据：'+evt.data);
+        };
+        ws.onclose = function(evt) {
+            alert('连接已关闭..');
+        };
+    </script>
+</body>
+</html>
