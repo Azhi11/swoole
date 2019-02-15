@@ -5,7 +5,7 @@
     <title>ws_client</title>
 </head>
 <body>
-<h1>ws hello</h1>
+<h1 onclick="sendto()">ws hello</h1>
     <script>
         var ws_url = "ws://www.azhiswoole.com:9801";
         var ws = new WebSocket(ws_url);
@@ -19,6 +19,10 @@
         ws.onclose = function(evt) {
             alert('连接已关闭..');
         };
+
+        function sendto() {
+            ws.send('ni hao!!');
+        }
     </script>
 </body>
 </html>
